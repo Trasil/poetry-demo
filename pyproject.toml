@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "poetry-demo"
+version = "0.1.0"
+description = "Demo of poetry project with project and dev dependencies"
+authors = ["Trasil <azartem@mail.ru>"]
+readme = "README.md"
+packages = [{ include = "trasil", from="."}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+matplotlib = "^3.9.1"
+PyQt5 = "^5.15.10"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+isort = "^5.13.2"
+black = "^24.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+demo = "trasil.dynamichistogram.cli.__main__:main"
