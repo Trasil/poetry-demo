@@ -72,3 +72,31 @@ demo
 ``` python
 from trasil.dynamichistogram import ClassicHistogram
 ```
+
+# [Doit](https://github.com/pydoit/doit) demo
+
+Doit - менеджер заданий. Действия задаются в файле dodo.py в корне проекта
+
+## Основные действия
+Если пишет `bash: doit: command not found` - запускать через `poetry run doit`
+
+### List of actions
+``` bash
+doit list
+```
+### Check style of source codes
+``` bash
+doit check-style
+```
+### Run tests
+``` bash
+doit test
+```
+### Build package
+``` bash
+doit build
+```
+### Deploy package
+``` bash
+doit publish
+```
