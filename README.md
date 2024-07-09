@@ -52,3 +52,23 @@ poetry run pytest
 poetry run black --check ./trasil
 poetry run isort --check ./trasil
 ```
+
+## Install
+### Build
+``` bash
+# Create package
+poetry build
+
+# Install
+pip install dist/poetry_demo-<version>-py3-none-any.whl
+```
+### Use
+#### Run in terminal
+``` bash
+demo
+```
+
+#### Use in python project
+``` python
+from trasil.dynamichistogram import ClassicHistogram
+```
