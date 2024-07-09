@@ -12,7 +12,7 @@ class Interval:
     k: int = 0
 
     def __contains__(self, x):
-        return self.left <= x < self.right
+        return self.left <= x <= self.right
 
     def add(self, k=1):
         self.k += 1
