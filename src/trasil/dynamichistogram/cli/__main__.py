@@ -6,13 +6,13 @@ from random import uniform as urandom
 
 from matplotlib import pyplot as plt
 
-from trasil.dynamichistogram.classichistogram import ClassicHistogram as Hist
-from trasil.dynamichistogram.std import *
-
 from .demoscene import DemoScene
 from .parser import get_parser
 
 
+
+from trasil.dynamichistogram.classichistogram import ClassicHistogram as Hist
+from trasil.dynamichistogram.std import *
 def prepare_axs(a, b):
     fig = plt.figure(figsize=(18, 10))
     axs = tuple(fig.add_subplot(int(f"13{i+1}")) for i in range(3))
