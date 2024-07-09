@@ -48,7 +48,7 @@ class ClassicHistogram:
         for i in self.cs:
             x, y = i.f(self.m)
             ax.plot(x, y, 'r')
-            ax.fill_between(x, y, color='FF999955')
+            ax.fill_between(x, y)#, color='FF999955')
 
     def _cdf(self):
         self.x = [self.cs[0].left]

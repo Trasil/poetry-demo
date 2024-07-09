@@ -1,0 +1,1 @@
+from .classichistogram import ClassicHistogram
