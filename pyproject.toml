@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Demo of poetry project with project and dev dependencies"
 authors = ["Trasil <azartem@mail.ru>"]
 readme = "README.md"
-packages = [{ include = "trasil", from="."}]
+packages = [{ include = "trasil", from="src"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
