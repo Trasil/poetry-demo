@@ -1,8 +1,9 @@
-import numpy as np
-
 from dataclasses import dataclass
 
-from trasil.dynamichistogram.std import cout, cerr
+import numpy as np
+
+from trasil.dynamichistogram.std import cerr, cout
+
 
 @dataclass
 class Interval:
@@ -17,12 +18,14 @@ class Interval:
         self.k += 1
 
     def f(self, m=1):
-        return [self.left, self.right], [self.k/m, self.k/m]
+        return [self.left, self.right], [self.k / m, self.k / m]
 
 
 class ClassicHistogram:
     def __init__(self, a, b, n):
-        self.cs = [Interval(a+(b-a)/n*i, a+(b-a)/n*(i+1)) for i in range(n)]
+        self.cs = [
+            Interval(a + (b - a) / n * i, a + (b - a) / n * (i + 1)) for i in range(n)
+        ]
         self.x = None
         self.y = None
         self.m = 0
@@ -30,11 +33,11 @@ class ClassicHistogram:
     def add(self, x):
         self.x = self.y = None
 
-        cout(f'{x = }', 32)
+        cout(f"{x = }", 32)
         for i in self.cs:
             if x in i:
                 cout(i, 34)
-                i.add()                 
+                i.add()
                 cout(i, 35)
                 break
         else:
@@ -42,26 +45,26 @@ class ClassicHistogram:
             self.cs[-1].add()
             cout(self.cs[-1], 35)
         self.m += 1
-        cout('=================')
+        cout("=================")
 
     def draw_hist(self, ax=None):
         for i in self.cs:
             x, y = i.f(self.m)
-            ax.plot(x, y, 'r')
-            ax.fill_between(x, y)#, color='FF999955')
+            ax.plot(x, y, "r")
+            ax.fill_between(x, y)  # , color='FF999955')
 
     def _cdf(self):
         self.x = [self.cs[0].left]
         self.y = [0]
         for i in self.cs:
             self.x.append(i.right)
-            self.y.append(self.y[-1] + i.k/self.m)
+            self.y.append(self.y[-1] + i.k / self.m)
 
     def draw_cdf(self, ax=None):
         if self.x is None:
             self._cdf()
 
-        ax.plot(self.x, self.y, 'r')
+        ax.plot(self.x, self.y, "r")
 
     def cdf(self, x: np.array):
         def _cdf(x):
@@ -74,8 +77,9 @@ class ClassicHistogram:
                     a = inv.left
                     b = inv.right
                     ya = self.y[i]
-                    yb = self.y[i+1]
-                    return ya + (x-a) * (yb-ya) / (b-a)
+                    yb = self.y[i + 1]
+                    return ya + (x - a) * (yb - ya) / (b - a)
+
         if self.x is None:
             self._cdf()
 

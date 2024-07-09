@@ -1,9 +1,10 @@
 import numpy as np
 
+
 class DemoScene:
     def __init__(self, *hists):
         self.hists = hists
-        
+
         self._axs = []
 
     def add_dot(self, x):
@@ -21,7 +22,7 @@ class DemoScene:
     def draw_scene(self):
         for ax in self.axs:
             ax.cla()
-            #ax.set_ylim(0, 1)
+            # ax.set_ylim(0, 1)
 
         for h in self.hists:
             h.draw_hist(self.axs[0])
@@ -33,4 +34,4 @@ class DemoScene:
         y0 = self.hists[0].cdf(x)
         y1 = self.hists[1].cdf(x)
 
-        return np.sum(np.square(y0 - y1))/m
+        return np.sum(np.square(y0 - y1)) / m
